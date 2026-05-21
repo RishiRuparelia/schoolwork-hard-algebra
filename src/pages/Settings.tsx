@@ -276,10 +276,10 @@ const Settings = () => {
                             <span>Google Docs</span>
                           </div>
                         </SelectItem>
-                        <SelectItem value="outlook">
+                        <SelectItem value="google-slides">
                           <div className="flex items-center gap-2">
-                            <img className="h-4 w-4 rounded-sm" src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Microsoft_Outlook_Icon_%282025%E2%80%93present%29.svg" alt="Outlook" />
-                            <span>Outlook</span>
+                            <img className="h-4 w-4 rounded-sm" src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png"/>
+                            <span>Google Slides</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="custom">

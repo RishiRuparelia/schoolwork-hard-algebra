@@ -21,13 +21,13 @@ const Index = () => {
     "good luck finding that coin",
     "ok thats enough",
     ":>",
-    "ctrl + shift + qq",
     "UwU",
     "v1 was trash",
     "+1 cookie",
     "bet on red",
     "Japan is turning footsteps into electricity! Using piezoelectric tiles, every step you take generates a small amount of energy.",
     "who reads these anyway",
+    "levi is the best at gd",
   ];
 
   const [messageIndex, setMessageIndex] = useState(() =>
@@ -42,7 +42,7 @@ const Index = () => {
       
       <main className="container mx-auto px-4 pt-32 pb-12">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl font-bold mb-4 glow-text">
+          <h1 className="text-5xl font-bold mb-4 glow-text" style={{ fontFamily: "'Orbitron', sans-serif" }}>
             Kepler
           </h1>
           <p

@@ -45,7 +45,9 @@ const ProxyInput = () => {
           size="lg"
         >
           <Search className="w-5 h-5 mr-2" />
-          Search
+          <span style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "1.0rem", letterSpacing: "0.05em" }}>
+            Search
+          </span>
         </Button>
       </div>
     </div>

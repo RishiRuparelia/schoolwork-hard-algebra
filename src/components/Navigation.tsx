@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useUserSettings } from "@/hooks/useUserSettings";
+import keplerLogo from "@/assets/kepler-logo.png";
 
 const Navigation = () => {
   const location = useLocation();
@@ -37,11 +38,9 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-white font-bold text-sm">T</span>
-            </div>
-            <span className="text-lg sm:text-xl font-bold glow-text">
+          <div className="flex items-center gap-2"><img src={keplerLogo} alt="Kepler" className="w-10 h-10 transition-all duration-300 hover:drop-shadow-[0_0_8px_hsl(263,70%,65%)] cursor-pointer"/>
+            <span 
+              className="text-lg sm:text-xl font-bold glow-text transition-all duration-300 hover:[text-shadow:0_0_20px_hsl(263,70%,65%),0_0_40px_hsl(263,70%,65%)] cursor-pointer" style={{ fontFamily: "'Orbitron', sans-serif" }}>
               Kepler
             </span>
           </div>
@@ -64,7 +63,9 @@ const Navigation = () => {
                     )}
                   >
                     <Icon className="w-4 h-4" />
-                    {!simpleMode && <span className="hidden sm:inline">{link.label}</span>}
+                    {!simpleMode && <span className="hidden sm:inline" style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "0.7rem", letterSpacing: "0.05em" }}>
+                      {link.label}
+                    </span>}
                   </Link>
                 );
               })}

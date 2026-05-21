@@ -1,7 +1,7 @@
 import { useEffect, createContext, useContext, ReactNode, useState, useCallback, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
-export type TabCloakOption = 'google-drive' | 'google' | 'google-docs' | 'outlook' | 'custom';
+export type TabCloakOption = 'google-drive' | 'google' | 'google-docs' | 'google-slides' | 'custom';
 
 export interface UserSettings {
   accentColor: string;
@@ -100,10 +100,10 @@ export const getTabCloakMetadata = (settings: UserSettings) => {
         title: 'Google Docs',
         favicon: 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png',
       };
-    case 'outlook':
+    case 'google-slides':
       return {
-        title: 'Outlook',
-        favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Microsoft_Outlook_Icon_%282025%E2%80%93present%29.svg',
+        title: 'Google Slides',
+        favicon: 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png',
       };
     case 'custom':
       return {
