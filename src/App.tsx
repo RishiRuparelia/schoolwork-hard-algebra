@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import Settings from "./pages/Settings";
 import Chat from "./pages/Chat";
 import Auth from "./pages/Auth";
-import CommunityChat from "./pages/CommunityChat";
+import ChimePage from "./pages/ChimePage";
 import Account from "./pages/Account";
 import Games from "./pages/Games";
 import Search from "./pages/Search";
@@ -39,7 +39,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/games" element={<Games />} />
               <Route path="/chat" element={<Chat />} />
-              <Route path="/community-chat" element={<CommunityChat />} />
+              <Route path="/community-chat" element={<ChimePage />} />
               <Route path="/account" element={<Account />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/auth" element={<Auth />} />
