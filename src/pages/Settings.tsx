@@ -13,6 +13,12 @@ import ColorPicker from "@/components/ColorPicker";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useUserSettings } from "@/hooks/useUserSettings";
 import { getTabCloakMetadata, TabCloakOption } from "@/components/SettingsProvider";
+import GoogleDriveFavicon from '@/assets/google-drive-favicon.svg';
+import GoogleFavicon from '@/assets/google-favicon.ico';
+import GoogleDocsFavicon from '@/assets/google-docs-favicon.svg';
+import GoogleSlidesFavicon from '@/assets/google-slides-favicon.svg';
+import OutlookFavicon from '@/assets/outlook-favicon.svg';
+import CleverFavicon from '@/assets/clever-favicon.png';
 
 const accentColors = [
   { name: "Purple", value: "263 70% 50%", class: "bg-[hsl(263,70%,50%)]" },
@@ -260,26 +266,38 @@ const Settings = () => {
                       <SelectContent>
                         <SelectItem value="google-drive">
                           <div className="flex items-center gap-2">
-                            <img className="h-4 w-4 rounded-sm" src="https://drive.google.com/favicon.ico" alt="Google Drive" />
+                            <img className="h-4 w-4 rounded-sm" src={GoogleDriveFavicon} alt="Google Drive" />
                             <span>Google Drive</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="google">
                           <div className="flex items-center gap-2">
-                            <img className="h-4 w-4 rounded-sm" src="https://www.google.com/favicon.ico" alt="Google" />
+                            <img className="h-4 w-4 rounded-sm" src={GoogleFavicon} alt="Google" />
                             <span>Google</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="google-docs">
                           <div className="flex items-center gap-2">
-                            <img className="h-4 w-4 rounded-sm" src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png" alt="Google Docs" />
+                            <img className="h-4 w-4 rounded-sm" src={GoogleDocsFavicon} alt="Google Docs" />
                             <span>Google Docs</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="google-slides">
                           <div className="flex items-center gap-2">
-                            <img className="h-4 w-4 rounded-sm" src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png"/>
+                            <img className="h-4 w-4 rounded-sm" src={GoogleSlidesFavicon} alt="Google Slides" />
                             <span>Google Slides</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="outlook">
+                          <div className="flex items-center gap-2">
+                            <img className="h-4 w-4 rounded-sm" src={OutlookFavicon} alt="Outlook" />
+                            <span>Outlook</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="clever">
+                          <div className="flex items-center gap-2">
+                            <img className="h-4 w-4 rounded-sm" src={CleverFavicon} alt="Clever" />
+                            <span>Clever</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="custom">

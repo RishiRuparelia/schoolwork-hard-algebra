@@ -36,6 +36,14 @@
     "name": "Bloxorz"
   },
   {
+    "folder": "BrawlStars",
+    "name": "Brawl Stars"
+  },
+  {
+    "folder": "Brotato",
+    "name": "Brotato"
+  },
+  {
     "folder": "Chess",
     "name": "Chess"
   },
@@ -50,6 +58,10 @@
   {
     "folder": "CookieClicker",
     "name": "Cookie Clicker"
+  },
+  {
+    "folder": "CrossyRoad",
+    "name": "Crossy Road"
   },
   {
     "folder": "Cuttherope",
@@ -116,6 +128,10 @@
     "name": "Gladihoppers"
   },
   {
+    "folder": "Granny",
+    "name": "Granny"
+  },
+  {
     "folder": "GTA",
     "name": "Grand Theft Auto"
   },
@@ -138,6 +154,10 @@
   {
     "folder": "InfiniteCraft",
     "name": "Infinite Craft"
+  },
+  {
+    "folder": "Paperio",
+    "name": "Paper.io"
   },
   {
     "folder": "Polytrack",
@@ -170,6 +190,10 @@
   {
     "folder": "Terra",
     "name": "Terra"
+  },
+  {
+    "folder": "TombOTMask",
+    "name": "Tomb of the Mask"
   },
   {
     "folder": "Vex3",

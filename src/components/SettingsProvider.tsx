@@ -1,7 +1,13 @@
 import { useEffect, createContext, useContext, ReactNode, useState, useCallback, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import GoogleDriveFavicon from '@/assets/google-drive-favicon.svg';
+import GoogleFavicon from '@/assets/google-favicon.ico';
+import GoogleDocsFavicon from '@/assets/google-docs-favicon.svg';
+import GoogleSlidesFavicon from '@/assets/google-slides-favicon.svg';
+import OutlookFavicon from '@/assets/outlook-favicon.svg';
+import CleverFavicon from '@/assets/clever-favicon.png';
 
-export type TabCloakOption = 'google-drive' | 'google' | 'google-docs' | 'google-slides' | 'custom';
+export type TabCloakOption = 'google-drive' | 'google' | 'google-docs' | 'google-slides' | 'outlook' | 'clever' | 'custom';
 
 export interface UserSettings {
   accentColor: string;
@@ -88,32 +94,42 @@ export const getTabCloakMetadata = (settings: UserSettings) => {
     case 'google-drive':
       return {
         title: 'My Drive - Google Drive',
-        favicon: 'https://drive.google.com/favicon.ico',
+        favicon: GoogleDriveFavicon,
       };
     case 'google':
       return {
         title: 'Google',
-        favicon: 'https://www.google.com/favicon.ico',
+        favicon: GoogleFavicon,
       };
     case 'google-docs':
       return {
         title: 'Google Docs',
-        favicon: 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png',
+        favicon: GoogleDocsFavicon,
       };
     case 'google-slides':
       return {
         title: 'Google Slides',
-        favicon: 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x16.png',
+        favicon: GoogleSlidesFavicon,
+      };
+    case 'outlook':
+      return {
+        title: 'Outlook',
+        favicon: OutlookFavicon,
+      };
+    case 'clever':
+      return {
+        title: 'Clever | Portal',
+        favicon: CleverFavicon,
       };
     case 'custom':
       return {
         title: settings.customTabTitle || 'New Tab',
-        favicon: settings.customFavicon || 'https://www.google.com/favicon.ico',
+        favicon: settings.customFavicon || 'GoogleFavicon',
       };
     default:
       return {
         title: 'My Drive - Google Drive',
-        favicon: 'https://drive.google.com/favicon.ico',
+        favicon: GoogleDriveFavicon,
       };
   }
 };
