@@ -9,8 +9,8 @@ import ShootingStars from "@/components/ShootingStars";
 import Index from "./pages/Index";
 import Settings from "./pages/Settings";
 import Chat from "./pages/Chat";
-import Auth from "./pages/Auth";
 import ChimePage from "./pages/ChimePage";
+import { Navigate } from "react-router-dom";
 import Account from "./pages/Account";
 import Games from "./pages/Games";
 import Search from "./pages/Search";
@@ -42,7 +42,7 @@ const App = () => (
               <Route path="/community-chat" element={<ChimePage />} />
               <Route path="/account" element={<Account />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/auth" element={<Auth />} />
+              <Route path="/auth" element={<Navigate to="/community-chat" replace />} />
               <Route path="/browser" element={<BrowserView />} />
               <Route path="/search" element={<Search />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
