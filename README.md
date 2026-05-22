@@ -2,18 +2,33 @@
 
 Our platform provides a smooth, reliable experience where users can access a wide range of unblocked games and a fast, built‑in search experience.
 
-## Project info
+## Chapters
+
+- [Project Info](#project-info)
+- [Features](#features)
+- [Running through Github Codespaces](#running-through-github-codespaces)
+- [Contributing](#contributing)
+- [Contributors](#contributors)
+- [Version](#version)
+
+---
+
+### Project info
 
 **URL**: https://schoolwork-hard-algebra.pages.dev/
 
-## Features
+---
+
+### Features
 
 - Access to wide selection of games that load quickly and reliably, even on restricted networks
 - Private search feature that lets users look up games and websites without saving or tracking any search history 
 - Built‑in AI chat system that helps users get quick answers without leaving the page
 - A built‑in chat where users can talk with each other in real time
 
-## Running through GitHub Codespaces
+---
+
+### Running through GitHub Codespaces
 
 - Click the green Code button at the top right of the repo
 <img width="1365" height="478" alt="part 1" src="https://github.com/user-attachments/assets/c435bcc9-564a-46e1-857d-ea3ec0288097" />
@@ -35,8 +50,9 @@ Our platform provides a smooth, reliable experience where users can access a wid
 - Press "Open in Browser on the popup that appears
 <img width="452" height="104" alt="part 6" src="https://github.com/user-attachments/assets/f86feda2-aa04-4431-8be9-ae8db0f0e8a0" />
 
+---
 
-## Contributing
+### Contributing
 
 - Fork the repository
 - Create a new branch for your changes
@@ -45,10 +61,16 @@ Our platform provides a smooth, reliable experience where users can access a wid
 - Submit a pull request with a short description of what you changed
 - Our team will review your changes and, if approved, merge them into the main branch and credit you in the contributors tab
 
+---
+
 ### Contributors
 
-in progress
+  <a href="https://github.com/snork1023/schoolwork-hard-algebra/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=snork1023/schoolwork-hard-algebra" />
+  </a>
 
-### Version
+---
 
-**2.0**: Add games and search
+#### Version
+
+**2.01**: New search ui and more games
