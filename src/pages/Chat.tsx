@@ -7,16 +7,26 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Loader2, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
-import { checkRateLimit, formatCountdown } from "@/lib/chime/rate-limit";
 
 type Message = {
   role: "user" | "assistant";
   content: string;
 };
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 const RATE_LIMIT = 30;
-const RATE_WINDOW_MS = 60 * 60_000;
+
+const CHAT_URL =
+  import.meta.env.VITE_AI_CHAT_URL ||
+  (import.meta.env.VITE_FIREBASE_PROJECT_ID
+    ? `https://us-central1-${import.meta.env.VITE_FIREBASE_PROJECT_ID}.cloudfunctions.net/aiChat`
+    : "");
+
+function formatCountdown(ms: number): string {
+  const totalSec = Math.ceil(ms / 1000);
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
+}
 
 const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -70,19 +80,10 @@ const Chat = () => {
       navigate("/community-chat");
       return;
     }
-
-    const limitKey = `aiChat:${user.uid}`;
-    const rl = checkRateLimit(limitKey, {
-      limit: RATE_LIMIT,
-      windowMs: RATE_WINDOW_MS,
-      cooldownMs: RATE_WINDOW_MS,
-    });
-    if (!rl.ok) {
-      setRateLimited(true);
-      setResetsAt(new Date(rl.resetsAt));
+    if (!CHAT_URL) {
       toast({
-        title: "Rate limit hit",
-        description: `Wait ${formatCountdown(rl.resetsAt - Date.now())} before chatting again.`,
+        title: "AI chat is not configured",
+        description: "Deploy the aiChat Cloud Function or set VITE_AI_CHAT_URL.",
         variant: "destructive",
       });
       return;
@@ -94,11 +95,13 @@ const Chat = () => {
     setIsLoading(true);
 
     try {
+      const idToken = await user.getIdToken();
+
       const response = await fetch(CHAT_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify({ messages: [...messages, userMessage] }),
       });
@@ -107,19 +110,30 @@ const Chat = () => {
         const data = await response.json().catch(() => ({}));
         setRateLimited(true);
         if (data.resetsAt) setResetsAt(new Date(data.resetsAt));
+        if (data.used != null) setUsedMessages(data.used);
         toast({
-          title: "Rate limit hit",
-          description: data.message || "Server is throttling. Try again soon.",
+          title: "Message limit reached",
+          description: data.message || `You've used all ${RATE_LIMIT} messages this hour.`,
           variant: "destructive",
         });
         setMessages(prev => prev.slice(0, -1));
         return;
       }
 
+      if (response.status === 401) {
+        toast({
+          title: "Session expired",
+          description: "Please sign in again.",
+          variant: "destructive",
+        });
+        navigate("/community-chat");
+        return;
+      }
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         toast({
-          title: response.status === 402 ? "Payment required" : "Error",
+          title: "Error",
           description: errorData.error || "Failed to get response",
           variant: "destructive",
         });
@@ -223,7 +237,7 @@ const Chat = () => {
                 <div className="h-full flex items-center justify-center text-center text-muted-foreground">
                   <div className="space-y-2">
                     <p className="text-lg">Ask me anything!</p>
-                    <p className="text-sm">Powered by Google Gemini</p>
+                    <p className="text-sm">Powered by OpenRouter (DeepSeek)</p>
                   </div>
                 </div>
               ) : (
